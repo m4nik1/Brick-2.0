@@ -3,7 +3,6 @@ package org.usfirst.frc.team558.robot;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.Joystick;
 import org.usfirst.frc.team558.robot.commands.*;
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.*;
 
 /**
@@ -14,7 +13,7 @@ public class OI {
 	
 	Joystick driveStick = new Joystick(0);
 	Joystick operatorStick = new Joystick(1);
-	XboxController AfterGlow = new XboxController(0);
+	
 	
 	
 	public OI(){
@@ -50,21 +49,4 @@ public class OI {
 		public double GetTurn(){
 			return -driveStick.getRawAxis(RobotMap.turnAxis);
 		}
-		
-		public void rumble(){
-			
-			if(driveStick.getRawAxis(3) > .1 || driveStick.getRawAxis(2) > .1){
-				
-				AfterGlow.setRumble(GenericHID.RumbleType.kLeftRumble, Robot.oi.GetThrottle());
-				AfterGlow.setRumble(GenericHID.RumbleType.kRightRumble, Robot.oi.GetThrottle());
-			}
-			
-			else{
-				
-				AfterGlow.setRumble(GenericHID.RumbleType.kLeftRumble, 0);
-				AfterGlow.setRumble(GenericHID.RumbleType.kRightRumble, 0);
-				
-			}
-		}
-	
 }

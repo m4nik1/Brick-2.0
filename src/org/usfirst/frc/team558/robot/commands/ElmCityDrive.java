@@ -130,8 +130,6 @@ public class ElmCityDrive extends Command {
         }
 
         Robot.driveTrain.drive(leftPwm, rightPwm);
-    	
-        Robot.oi.rumble();
     }
     
     public double handleDeadband(double val, double deadband) {
