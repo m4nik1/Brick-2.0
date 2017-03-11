@@ -15,6 +15,7 @@ public class Robot extends IterativeRobot {
 	public static PixyCam pixyCam = new PixyCam();
 	public static GearIntake gearIntake = new GearIntake();
 	public static SpeedGearIntake speedGearIntake = new SpeedGearIntake();
+	public static Gyro gyro = new Gyro();
 	public static OI oi;
 
 	Command autonomousCommand;
