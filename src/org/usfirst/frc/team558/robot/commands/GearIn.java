@@ -4,13 +4,14 @@ import org.usfirst.frc.team558.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+/**
+ *
+ */
+public class GearIn extends Command {
 
-
-public class GearInOut extends Command {
-
-    public GearInOut() {
+    public GearIn() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.speedGearIntake);
+    	requires(Robot.speedGearIntake);
     }
 
     // Called just before this Command runs the first time
