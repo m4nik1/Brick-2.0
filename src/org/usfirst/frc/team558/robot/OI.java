@@ -49,4 +49,10 @@ public class OI {
 		public double GetTurn(){
 			return -driveStick.getRawAxis(RobotMap.turnAxis);
 		}
+		
+		public double GearInOut(){
+			
+			return operatorStick.getRawAxis(2);
+			
+		}
 }

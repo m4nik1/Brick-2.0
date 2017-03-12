@@ -25,6 +25,12 @@ public class GearIntakeMotor extends Subsystem {
     	intakeMotor1.set(speed);
     	
     }
+    
+    public void GearIntakeStop(){
+    	
+    	intakeMotor1.set(0);
+    	
+    }
 	
 
     public void initDefaultCommand() {
