@@ -13,8 +13,8 @@ public class Robot extends IterativeRobot {
 
 	public static DriveTrain driveTrain = new DriveTrain();
 	public static PixyCam pixyCam = new PixyCam();
-	public static GearIntake gearIntake = new GearIntake();
-	public static SpeedGearIntake speedGearIntake = new SpeedGearIntake();
+	public static GearIntakeSol gearIntakeSol = new GearIntakeSol();
+	public static GearIntakeMotor gearIntakeMotors = new GearIntakeMotor();
 	public static Gyro gyro = new Gyro();
 	public static OI oi;
 
