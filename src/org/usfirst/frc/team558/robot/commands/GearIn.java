@@ -11,7 +11,7 @@ public class GearIn extends Command {
 
     public GearIn() {
         // Use requires() here to declare subsystem dependencies
-    	requires(Robot.speedGearIntake);
+    	requires(Robot.gearIntakeMotors);
     }
 
     // Called just before this Command runs the first time
@@ -21,7 +21,7 @@ public class GearIn extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	Robot.speedGearIntake.SetGearIntake(1);
+    	Robot.gearIntakeMotors.SetGearIntake(1);
     	
     }
 
