@@ -1,6 +1,6 @@
 package org.usfirst.frc.team558.robot;
 
-import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.*;
 import edu.wpi.first.wpilibj.Joystick;
 import org.usfirst.frc.team558.robot.commands.*;
 import edu.wpi.first.wpilibj.*;
@@ -13,13 +13,16 @@ public class OI {
 	
 	Joystick driveStick = new Joystick(0);
 	Joystick operatorStick = new Joystick(1);
+	JoystickButton GearSol = new JoystickButton(operatorStick, 1);
 	
 	
 	
 	public OI(){
-	
+		
+		
+		
 			
-		}
+	}
 		
 	
 	//Elm City Drive Methods
