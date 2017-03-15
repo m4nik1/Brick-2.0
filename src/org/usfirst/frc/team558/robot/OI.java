@@ -13,7 +13,7 @@ public class OI {
 	
 	Joystick driveStick = new Joystick(0);
 	Joystick operatorStick = new Joystick(1);
-	JoystickButton GearSol = new JoystickButton(operatorStick, 1);
+	JoystickButton GearSol = new JoystickButton(operatorStick, 2);
 	
 	
 	
