@@ -13,10 +13,9 @@ import edu.wpi.first.wpilibj.GenericHID;
  */
 public class OI {
 	
-	Joystick driveStick = new Joystick(0);
+	XboxController driveStick = new XboxController(0);
 	Joystick operatorStick = new Joystick(1);
 	JoystickButton GearSol = new JoystickButton(operatorStick, 2);
-	XboxController driverJoy = new XboxController(0);
 	
 	
 	
@@ -63,8 +62,8 @@ public class OI {
 		
 		public void rumble(double rumbleRight, double rumbleLeft){
 			
-			driverJoy.setRumble(GenericHID.RumbleType.kLeftRumble, .2);
-			driverJoy.setRumble(GenericHID.RumbleType.kRightRumble, .2);
+			driveStick.setRumble(GenericHID.RumbleType.kLeftRumble, rumbleLeft);
+			driveStick.setRumble(GenericHID.RumbleType.kRightRumble, rumbleRight);
 			
 		}
 }

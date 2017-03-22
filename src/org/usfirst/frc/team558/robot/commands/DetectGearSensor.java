@@ -21,7 +21,7 @@ public class DetectGearSensor extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	if(Robot.irSensor.IrRead() == true){
+    	if(Robot.irSensor.IrRead()){
     		
     		Robot.oi.rumble(.2, .2);
     		
