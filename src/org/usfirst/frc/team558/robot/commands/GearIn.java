@@ -29,7 +29,7 @@ public class GearIn extends Command {
     	}
     	else if(gearMotorAxis < -.3){
     		
-    		Robot.gearIntakeMotors.SetGearIntake(-.8);
+    		Robot.gearIntakeMotors.SetGearIntake(-1.0);
     		
     	}
     	else{
