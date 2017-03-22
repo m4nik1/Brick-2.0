@@ -55,6 +55,14 @@ public class RobotMap {
 			
 			
 			
+			
+		// Digital Inputs
+			
+			//IR Gear Sensor
+			public static int gearSensorChannel = 0;
+			
+			
+			
 		//Proportional Gains
 			public static double turn90Gain = .0114;
 			public static double turn59Gain = .0141;

@@ -10,9 +10,8 @@ import edu.wpi.first.wpilibj.GenericHID;
 
 public class OI {
 	
-	XboxController driveStick = new XboxController(0);
-	Joystick operatorStick = new Joystick(1);
-	JoystickButton GearSol = new JoystickButton(operatorStick, 2);
+	XboxController driveStick = new XboxController(RobotMap.driveJoystickPort);
+	Joystick operatorStick = new Joystick(RobotMap.operatorJoystickPort);
 	
 	
 	
@@ -60,7 +59,7 @@ public class OI {
 		
 		public double GearInOut(){
 			
-			return operatorStick.getRawAxis(2);
+			return operatorStick.getRawAxis(RobotMap.gearIntakeAxis);
 		}
 		
 		public void rumble(double rumbleRight, double rumbleLeft){

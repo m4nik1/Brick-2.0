@@ -2,6 +2,7 @@ package org.usfirst.frc.team558.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
+import org.usfirst.frc.team558.robot.RobotMap;
 import org.usfirst.frc.team558.robot.commands.ElmCityDrive;
 
 import com.ctre.*;
@@ -13,12 +14,13 @@ import com.ctre.CANTalon.TalonControlMode;
  */
 public class DriveTrain extends Subsystem {
 	
-	CANTalon leftDriveMaster = new CANTalon(1);
-	CANTalon rightDriveMaster = new CANTalon(4);
-	CANTalon rightDriveSlave1 = new CANTalon(5);
-	CANTalon rightDriveSlave2 = new CANTalon(6);
-	CANTalon leftDriveSlave1 = new CANTalon(2);
-	CANTalon leftDriveSlave2 = new CANTalon(3);
+	CANTalon leftDriveMaster = new CANTalon(RobotMap.leftDriveMaster);
+	CANTalon leftDriveSlave1 = new CANTalon(RobotMap.leftDriveSlave1);
+	CANTalon leftDriveSlave2 = new CANTalon(RobotMap.leftDriveSlave2);
+	CANTalon rightDriveMaster = new CANTalon(RobotMap.rightDriveMaster);
+	CANTalon rightDriveSlave1 = new CANTalon(RobotMap.rightDriveSlave1);
+	CANTalon rightDriveSlave2 = new CANTalon(RobotMap.rightDriveSlave2);
+
 	
 	public DriveTrain(){
 		
