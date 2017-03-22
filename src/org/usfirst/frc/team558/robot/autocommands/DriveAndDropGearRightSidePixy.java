@@ -17,7 +17,7 @@ public class DriveAndDropGearRightSidePixy extends CommandGroup {
     	addSequential(new DriveWithEncoder(-79.4, .6, 5, RobotMap.drive72Gain));
     	addSequential(new TurnWithGyro(-59, .6, RobotMap.turn59Gain));
     	addSequential(new DriveWithPixyAndEncoder(-48, .6, 5, RobotMap.drive72Gain));
-    	addParallel(new DropGear(2));  
+    	addSequential(new DropGear(2));  
         addSequential(new DriveWithEncoder(15, .6, 2, RobotMap.drive15Gain));
         addSequential(new ResetGearIntake(2));
         addSequential(new TurnWithGyro(59, .6, RobotMap.turn59Gain));

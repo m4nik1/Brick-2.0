@@ -16,7 +16,7 @@ public class DriveDropGearPixy extends CommandGroup {
     	requires(Robot.gearIntakeSol);
 
         addSequential(new DriveWithPixyAndEncoder(-72, .6, 5, RobotMap.drive72Gain));
-        addParallel(new DropGear(2));  
+        addSequential(new DropGear(2));  
         addSequential(new DriveWithEncoder(15, .6, 2, RobotMap.drive15Gain));
         addSequential(new ResetGearIntake(2));
         addSequential(new TurnWithGyro(90, .6, RobotMap.turn90Gain));

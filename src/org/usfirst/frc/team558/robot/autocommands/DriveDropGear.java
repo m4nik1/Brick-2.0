@@ -16,7 +16,7 @@ public class DriveDropGear extends CommandGroup {
     	requires(Robot.gearIntakeSol);
 
         addSequential(new DriveWithEncoder(-85, .6, 5, RobotMap.drive72Gain));
-        addParallel(new DropGear(2));  
+        addSequential(new DropGear(2));  
         addSequential(new DriveWithEncoder(15, .6, 2, RobotMap.drive15Gain));
         addSequential(new ResetGearIntake(2));
         addSequential(new TurnWithGyro(90, .6, RobotMap.turn90Gain));

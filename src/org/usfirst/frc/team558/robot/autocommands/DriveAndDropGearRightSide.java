@@ -17,7 +17,7 @@ public class DriveAndDropGearRightSide extends CommandGroup {
     	addSequential(new DriveWithEncoder(-75.4, .6, 3, RobotMap.drive72Gain));
     	addSequential(new TurnWithGyro(-59, .6, RobotMap.turn59Gain));
     	addSequential(new DriveWithEncoder(-58, .6, 3, RobotMap.drive72Gain));
-    	addParallel(new DropGear(2)); 
+    	addSequential(new DropGear(2)); 
         addSequential(new DriveWithEncoder(15, .6, 2, RobotMap.drive15Gain));
         addSequential(new ResetGearIntake(2));
         addSequential(new TurnWithGyro(59, .6, RobotMap.turn59Gain));
