@@ -21,6 +21,7 @@ public class Robot extends IterativeRobot {
 	
 	public static Compressor pcm = new Compressor();
 	public static Relay compressor = new Relay(0);
+	public static GearSensor irSensor = new GearSensor();
 	public static OI oi;
 
 	Command autonomousCommand;

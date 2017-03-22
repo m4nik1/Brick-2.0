@@ -4,6 +4,8 @@ import edu.wpi.first.wpilibj.buttons.*;
 import edu.wpi.first.wpilibj.Joystick;
 import org.usfirst.frc.team558.robot.commands.*;
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -14,6 +16,7 @@ public class OI {
 	Joystick driveStick = new Joystick(0);
 	Joystick operatorStick = new Joystick(1);
 	JoystickButton GearSol = new JoystickButton(operatorStick, 2);
+	XboxController driverJoy = new XboxController(0);
 	
 	
 	
@@ -56,6 +59,12 @@ public class OI {
 		public double GearInOut(){
 			
 			return operatorStick.getRawAxis(2);
+		}
+		
+		public void rumble(double rumbleRight, double rumbleLeft){
+			
+			driverJoy.setRumble(GenericHID.RumbleType.kLeftRumble, .2);
+			driverJoy.setRumble(GenericHID.RumbleType.kRightRumble, .2);
 			
 		}
 }
