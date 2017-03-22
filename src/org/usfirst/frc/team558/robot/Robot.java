@@ -18,6 +18,7 @@ public class Robot extends IterativeRobot {
 	public static GearIntakeSol gearIntakeSol = new GearIntakeSol();
 	public static GearIntakeMotor gearIntakeMotors = new GearIntakeMotor();
 	public static Gyro gyro = new Gyro();
+	public static Brake brake = new Brake();
 	
 	public static Compressor pcm = new Compressor();
 	public static Relay compressor = new Relay(0);

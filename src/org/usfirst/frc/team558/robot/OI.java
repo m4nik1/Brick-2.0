@@ -18,7 +18,11 @@ public class OI {
 	
 	public OI(){
 		
+		JoystickButton brakeOnBtn = new JoystickButton(operatorStick, RobotMap.breakOnButton);
+		JoystickButton brakeOffBtn = new JoystickButton(operatorStick, RobotMap.breakOffButton);
 		
+		brakeOnBtn.whenPressed(new SetBrakeOn());
+		brakeOffBtn.whenPressed(new SetBrakeOff());
 		
 			
 	}
