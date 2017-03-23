@@ -13,8 +13,8 @@ public class RobotMap {
 			public static int quickTurnButton = 2;
 			
 			public static int turnAxis = 0;
-			public static int throttleForwardAxis = 3;
-			public static int throttleReverseAxis = 2;
+			public static int throttleForwardAxis = 3; // Climber Side
+			public static int throttleReverseAxis = 2; // Gear Side
 			
 			
 			//Operator Joystick Axes and Buttons
@@ -28,18 +28,18 @@ public class RobotMap {
 		//Speed Controllers
 			
 			//Drive TalonSRXs
-			public static int leftDriveMaster = 1;
-			public static int leftDriveSlave1 = 16;
+			public static int leftDriveMaster = 16;
+			public static int leftDriveSlave1 = 1;
 			public static int leftDriveSlave2 = 2;
 				
-			public static int rightDriveMaster = 13;
-			public static int rightDriveSlave1 = 14;
-			public static int rightDriveSlave2 = 12;
+			public static int rightDriveMaster = 15;
+			public static int rightDriveSlave1 = 13;
+			public static int rightDriveSlave2 = 14;
 			
 						
 			//Gear Intake TalonSRXs
-			public static int gearIntakeChannel1 = 10;
-			public static int gearIntakeChannel2= 11;
+			public static int gearIntakeChannel1 = 12;
+			public static int gearIntakeChannel2= 3;
 			
 			
 			

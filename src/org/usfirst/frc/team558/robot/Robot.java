@@ -101,8 +101,8 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 		
-		//Robot.driveTrain.SetRampRate();
-		
+		Robot.driveTrain.SetRampRate();
+		Robot.gyro.ResetGyro();
 	}
 
 	

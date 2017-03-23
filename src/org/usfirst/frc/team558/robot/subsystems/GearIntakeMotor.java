@@ -23,8 +23,8 @@ public class GearIntakeMotor extends Subsystem {
     
     public void SetGearIntake(double speed){
     	
-    	intakeMotor1.set(speed);
-    	intakeMotor2.set(-speed);
+    	intakeMotor1.set(-speed);
+    	intakeMotor2.set(speed);
     	
     }
     

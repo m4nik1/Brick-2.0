@@ -50,8 +50,8 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	public void drive(double leftPower, double rightPower){
-		this.leftDriveMaster.set(leftPower);
-		this.rightDriveMaster.set(-rightPower);
+		this.leftDriveMaster.set(-leftPower);
+		this.rightDriveMaster.set(rightPower);
 	}
    
     public void initDefaultCommand() {
