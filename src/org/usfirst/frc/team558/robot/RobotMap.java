@@ -9,12 +9,18 @@ public class RobotMap {
 			public static int operatorJoystickPort = 1;
 			
 			
-			//Driver Joystick Axes and Buttons
+			//Driver Joystick Axes, Buttons, and Sensitivities 
 			public static int quickTurnButton = 2;
+			public static int creepModeFwdBtn = 5;
+			public static int creepModeRevBtn = 6;
 			
 			public static int turnAxis = 0;
 			public static int throttleForwardAxis = 3; // Climber Side
 			public static int throttleReverseAxis = 2; // Gear Side
+			
+			public static double creepModeThrottle = .3;
+			public static double quickturnSensitivity = .95;
+			public static double normalTurnSensitivity = .75;
 			
 			
 			//Operator Joystick Axes and Buttons
@@ -64,11 +70,13 @@ public class RobotMap {
 			
 			
 		//Proportional Gains
-			public static double turn90Gain = .0114;
-			public static double turn59Gain = .0141;
 			
-			public static double drive72Gain = .018; //good for 60" and 48"
-			public static double drive15Gain = .023;
+			
+			public static double turn60Gain = .05;
+			public static double turn90Gain = .05; //.016
+			
+			public static double drive85Gain = .0085;
+			public static double drive71Gain = .0089;
 			
 	
 }

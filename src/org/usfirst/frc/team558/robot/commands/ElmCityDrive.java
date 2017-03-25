@@ -1,6 +1,7 @@
 package org.usfirst.frc.team558.robot.commands;
 
 import org.usfirst.frc.team558.robot.Robot;
+import org.usfirst.frc.team558.robot.RobotMap;
 import org.usfirst.frc.team558.robot.util.Util;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -48,7 +49,7 @@ public class ElmCityDrive extends Command {
         
 
         double leftPwm, rightPwm, overPower;
-        double sensitivity = 1.7;
+        double sensitivity = RobotMap.normalTurnSensitivity;
 
         double angularPower;
         double linearPower;
@@ -67,7 +68,7 @@ public class ElmCityDrive extends Command {
               negInertiaScalar = 3.0;
             }
           }
-          sensitivity = .75;
+          sensitivity = RobotMap.normalTurnSensitivity;
 
           if (Math.abs(throttle) > 0.1) {
           }
@@ -97,7 +98,7 @@ public class ElmCityDrive extends Command {
           overPower = 1.0;
           sensitivity = 1.0;
           
-          angularPower = 1.3* wheel;
+          angularPower = RobotMap.quickturnSensitivity * wheel;
         } 
         else {
           overPower = 0.0;

@@ -15,14 +15,14 @@ public class DriveAndDropGearLeftSide extends CommandGroup {
     	requires(Robot.gearIntakeSol);
     	requires(Robot.gearIntakeMotors);
 
-    	addSequential(new DriveWithEncoder(-75.4, .6, 3, RobotMap.drive72Gain));
-    	addSequential(new TurnWithGyro(59, .6, RobotMap.turn59Gain));
-    	addSequential(new DriveWithEncoder(-58, .6, 3, RobotMap.drive72Gain)); //** past manik says you should change the distance value
-    	addSequential(new DropGear(2)); // past manik says to ask Alan if we need this parallel code
-        addSequential(new DriveWithEncoder(15, .6, 3, RobotMap.drive15Gain));
-        addSequential(new ResetGearIntake(2));
-        addSequential(new TurnWithGyro(-59, .6, RobotMap.turn59Gain));
-        addSequential(new DriveWithEncoder(-30, .6, 3, RobotMap.drive15Gain));
+    	addSequential(new DriveWithEncoder(85, .5, 3, RobotMap.drive85Gain));
+    	addSequential(new TurnWithGyro(60, .5, RobotMap.turn60Gain));
+    	addSequential(new DriveWithEncoder(71, .5, 3, RobotMap.drive71Gain));
+    	addSequential(new DropGear(.5));
+        addSequential(new DriveWithEncoder(-25, .5, 3, RobotMap.drive71Gain));
+        addSequential(new ResetGearIntake(.5));
+        addSequential(new TurnWithGyro(-60, .5, RobotMap.turn60Gain));
+        addSequential(new DriveWithEncoder(50, .5, 3, RobotMap.drive71Gain));
      
     }
 }

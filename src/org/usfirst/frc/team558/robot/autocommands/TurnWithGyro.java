@@ -45,11 +45,11 @@ public class TurnWithGyro extends Command {
   
     	if (Robot.gyro.GetAngle() > desiredAngle)
         {
-    		Robot.driveTrain.drive(pidSpeed, -pidSpeed);
+    		Robot.driveTrain.drive(-pidSpeed, pidSpeed);
         }
         else
         {
-        	Robot.driveTrain.drive(-pidSpeed, pidSpeed);
+        	Robot.driveTrain.drive(pidSpeed, -pidSpeed);
         }
     	
     	
@@ -57,7 +57,7 @@ public class TurnWithGyro extends Command {
 
 
     protected boolean isFinished() {
-    	return ((Math.abs(error) <= tolerance) || isTimedOut());
+    	return isTimedOut(); //((Math.abs(error) <= tolerance) || isTimedOut());
     }
 
 

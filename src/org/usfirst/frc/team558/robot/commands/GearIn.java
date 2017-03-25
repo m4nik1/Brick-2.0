@@ -24,12 +24,12 @@ public class GearIn extends Command {
     	
     	if(gearMotorAxis > .3){
     		
-    		Robot.gearIntakeMotors.SetGearIntake(1.0);
+    		Robot.gearIntakeMotors.SetGearIntake(.65);
     		
     	}
     	else if(gearMotorAxis < -.3){
     		
-    		Robot.gearIntakeMotors.SetGearIntake(-1.0);
+    		Robot.gearIntakeMotors.SetGearIntake(-.65);
     		
     	}
     	else{

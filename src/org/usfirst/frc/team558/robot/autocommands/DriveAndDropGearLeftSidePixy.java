@@ -14,15 +14,16 @@ public class DriveAndDropGearLeftSidePixy extends CommandGroup {
     	requires(Robot.driveTrain);
     	requires(Robot.gearIntakeMotors);
     	requires(Robot.gearIntakeSol);
+    	requires(Robot.pixyCam);
 
-    	addSequential(new DriveWithEncoder(-79.4, .6, 5, RobotMap.drive72Gain));
-    	addSequential(new TurnWithGyro(59, .6, RobotMap.turn59Gain));
-    	addSequential(new DriveWithPixyAndEncoder(-48, .6, 5, RobotMap.drive72Gain));
-    	addSequential(new DropGear(2)); 
-        addSequential(new DriveWithEncoder(15, .6, 3, RobotMap.drive15Gain));
-        addSequential(new ResetGearIntake(2));
-        addSequential(new TurnWithGyro(-59, .6, RobotMap.turn59Gain));
-        addSequential(new DriveWithEncoder(-30, .6, 5, RobotMap.drive15Gain));     	
+    	addSequential(new DriveWithEncoder(85, .5, 3, RobotMap.drive85Gain));
+    	addSequential(new TurnWithGyro(60, .5, RobotMap.turn60Gain));
+    	addSequential(new DriveWithPixyAndEncoder(71, .5, 3, RobotMap.drive71Gain));
+    	addSequential(new DropGear(.5));
+        addSequential(new DriveWithEncoder(-15, .5, 3, RobotMap.drive71Gain));
+        addSequential(new ResetGearIntake(.5));
+        addSequential(new TurnWithGyro(-60, .5, RobotMap.turn60Gain));
+        addSequential(new DriveWithEncoder(30, .5, 3, RobotMap.drive71Gain));     	
     	
      
     }

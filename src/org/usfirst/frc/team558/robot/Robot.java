@@ -19,6 +19,8 @@ import org.usfirst.frc.team558.robot.autocommands.DriveAndDropGearRightSide;
 import org.usfirst.frc.team558.robot.autocommands.DriveAndDropGearRightSidePixy;
 import org.usfirst.frc.team558.robot.autocommands.DriveDropGear;
 import org.usfirst.frc.team558.robot.autocommands.DriveDropGearPixy;
+import org.usfirst.frc.team558.robot.autocommands.DriveWithEncoder;
+import org.usfirst.frc.team558.robot.autocommands.TurnWithGyro;
 import org.usfirst.frc.team558.robot.subsystems.*;
 
 public class Robot extends IterativeRobot {
@@ -64,6 +66,8 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void disabledInit() {
+		
+		Robot.oi.rumble(0, 0);
 
 	}
 
@@ -75,9 +79,11 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = (Command) chooser.getSelected();
-		
+		//autonomousCommand = (Command) chooser.getSelected();
+		autonomousCommand = new TurnWithGyro(60, .5, RobotMap.turn60Gain); //For Tuning Only
 		Robot.driveTrain.resetEncoders();
+		Robot.gyro.ResetGyro();
+		Robot.driveTrain.EnableBrakeMode();
 		
 				if (autonomousCommand != null)
 				autonomousCommand.start();
@@ -88,7 +94,7 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 		Robot.pixyCam.read();
-		SmartDashboard.putNumber("Gyro Angle", Robot.gyro.GetAngle());
+		SmartDashboard.putNumber("Gyro Value", Robot.gyro.GetAngle());
 		SmartDashboard.putNumber("Left Encoder", Robot.driveTrain.GetLeftEncoder());
 		SmartDashboard.putNumber("Right Encoder", Robot.driveTrain.GetRightEncoder());
 		SmartDashboard.putNumber("Average Encoder", Robot.driveTrain.GetAverageEncoderDistance());
@@ -103,6 +109,9 @@ public class Robot extends IterativeRobot {
 		
 		Robot.driveTrain.SetRampRate();
 		Robot.gyro.ResetGyro();
+		Robot.driveTrain.resetEncoders();
+		Robot.driveTrain.DisableBrakeMode();
+		
 	}
 
 	
@@ -122,7 +131,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Average Encoder", Robot.driveTrain.GetAverageEncoderDistance());
 		SmartDashboard.putNumber("Pixy Offset" , Robot.pixyCam.getLastOffset());
 		SmartDashboard.putNumber("Gyro Value", Robot.gyro.GetAngle());
-		
+		SmartDashboard.putBoolean("Gear Sensor" , Robot.irSensor.IrRead());
 	}
 
 	
