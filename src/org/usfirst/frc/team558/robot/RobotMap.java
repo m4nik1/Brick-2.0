@@ -37,12 +37,12 @@ public class RobotMap {
 			public static int leftDriveMaster = 16;
 			public static int leftDriveSlave1 = 1;
 			public static int leftDriveSlave2 = 2;
-				
+			
 			public static int rightDriveMaster = 15;
 			public static int rightDriveSlave1 = 13;
 			public static int rightDriveSlave2 = 14;
 			
-						
+			
 			//Gear Intake TalonSRXs
 			public static int gearIntakeChannel1 = 12;
 			public static int gearIntakeChannel2= 3;
@@ -55,7 +55,7 @@ public class RobotMap {
 			public static int breakSolenoidChannel1 = 0;
 			public static int breakSolenoidChannel2 = 1;
 			
-			//Gear Placer
+			//Open Solenoids
 			public static int gearPlacerSolenoidChannel1 = 2;
 			public static int gearPlacerSolenoidChannel2 = 3;
 			

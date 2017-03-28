@@ -72,11 +72,11 @@ public class DriveWithPixyAndEncoder extends Command {
   
     	if (Robot.driveTrain.GetAverageEncoderDistance() < mDistance)
         {
-    		Robot.driveTrain.drive(pidSpeed * scaleLeft, pidSpeed * scaleRight);
+    		Robot.driveTrain.drive(-pidSpeed * scaleLeft, -pidSpeed * scaleRight);
         }
         else
         {
-        	Robot.driveTrain.drive(-pidSpeed * scaleLeft, -pidSpeed * scaleRight);
+        	Robot.driveTrain.drive(pidSpeed * scaleLeft, pidSpeed * scaleRight);
         }
     	
     }

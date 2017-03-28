@@ -38,10 +38,10 @@ public class Robot extends IterativeRobot {
 	public static Relay compressor = new Relay(0);
 	
 	public static OI oi;
-
+	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<Command>();
-
+	
 	
 	@Override
 	public void robotInit() {
@@ -58,7 +58,7 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("PIXY Drive Straight Drop Gear" , new DriveDropGearPixy());
 		chooser.addObject("PIXY Drive Right Drop Gear" , new DriveAndDropGearRightSidePixy());
 		chooser.addObject("PIXY Drive Left Drop Gear" , new DriveAndDropGearLeftSidePixy());
-
+		
 		
 		SmartDashboard.putData("Auto mode", chooser);
 	}

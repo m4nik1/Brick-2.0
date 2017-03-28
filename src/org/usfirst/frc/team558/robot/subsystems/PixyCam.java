@@ -156,11 +156,15 @@ public class PixyCam extends Subsystem {
 			
 			else
 			{
+				
+				setLastOffset(160); //Keeps robot going straight if nothing is picked up
+				
 				//Removed so pixy only outputs new offset if two blocks are found
 				//setLastOffset(pixyBlocks.get(0).centerX);
 			}
 		} else
 		{
+			setLastOffset(160); //Keeps robot going straight if nothing is picked up
 			setInRange(false);
 		}
 		return pixyBlocks;
