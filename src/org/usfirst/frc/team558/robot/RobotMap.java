@@ -72,7 +72,7 @@ public class RobotMap {
 		//Proportional Gains
 			
 			
-			public static double turn60Gain = .05;
+			public static double turn60Gain = .04;
 			public static double turn90Gain = .05; //.016
 			
 			public static double drive85Gain = .0085;

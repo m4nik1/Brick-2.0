@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team558.robot.autocommands.DoNothing;
+import org.usfirst.frc.team558.robot.autocommands.DoubleGearAuto;
 import org.usfirst.frc.team558.robot.autocommands.DriveAndDropGearLeftSide;
 import org.usfirst.frc.team558.robot.autocommands.DriveAndDropGearLeftSidePixy;
 import org.usfirst.frc.team558.robot.autocommands.DriveAndDropGearRightSide;
@@ -52,6 +53,7 @@ public class Robot extends IterativeRobot {
 		chooser.addDefault("Do Nothing", new DoNothing());
 		//chooser.addObject("CrossBaselineCenter", new CrossBaseline()); // Uncomment these if GearIntake doesn't at all
 		//chooser.addObject("CrossBaselineStraight", new CrossBaselineStraight()); // ****WARNING THIS IS LAST RESORT
+		chooser.addObject("DoubleGearAuto", new DoubleGearAuto());
 		chooser.addObject("Drive Straight Drop Gear" , new DriveDropGear());
 		chooser.addObject("Drive Right Drop Gear" , new DriveAndDropGearRightSide());
 		chooser.addObject("Drive Left Drop Gear" , new DriveAndDropGearLeftSide());
@@ -79,8 +81,8 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void autonomousInit() {
-		//autonomousCommand = (Command) chooser.getSelected();
-		autonomousCommand = new TurnWithGyro(60, .5, RobotMap.turn60Gain); //For Tuning Only
+		autonomousCommand = (Command) chooser.getSelected();
+		//autonomousCommand = new TurnWithGyro(60, .5, RobotMap.turn60Gain); //For Tuning Only
 		Robot.driveTrain.resetEncoders();
 		Robot.gyro.ResetGyro();
 		Robot.driveTrain.EnableBrakeMode();
@@ -119,12 +121,12 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 	Scheduler.getInstance().run();
 		
-		if (!pcm.getPressureSwitchValue()){
+		/*if (!pcm.getPressureSwitchValue()){
 			compressor.set(Value.kForward);
 		}
 		else {
 			compressor.set(Value.kOff);
-		}
+		}*/
 		Robot.pixyCam.read();
 		SmartDashboard.putNumber("Left Encoder", Robot.driveTrain.GetLeftEncoder());
 		SmartDashboard.putNumber("Right Encoder", Robot.driveTrain.GetRightEncoder());
