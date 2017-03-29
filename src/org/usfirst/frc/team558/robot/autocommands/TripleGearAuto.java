@@ -1,5 +1,7 @@
 package org.usfirst.frc.team558.robot.autocommands;
 
+import org.usfirst.frc.team558.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -8,21 +10,26 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class TripleGearAuto extends CommandGroup {
 
     public TripleGearAuto() {
-        // Add Commands here:
-        // e.g. addSequential(new Command1());
-        //      addSequential(new Command2());
-        // these will run in order.
-
-        // To run multiple commands at the same time,
-        // use addParallel()
-        // e.g. addParallel(new Command1());
-        //      addSequential(new Command2());
-        // Command1 and Command2 will run in parallel.
-
-        // A command group will require all of the subsystems that each member
-        // would require.
-        // e.g. if Command1 requires chassis, and Command2 requires arm,
-        // a CommandGroup containing them would require both the chassis and the
-        // arm.
+    	addSequential(new DriveWithEncoder(85, .5, 2, RobotMap.drive85Gain));
+        addSequential(new DropGear(.5));  
+        addSequential(new DriveWithEncoder(-25, .5, 2, RobotMap.drive71Gain));
+        addSequential(new ResetGearIntake(.5));
+        addSequential(new TurnWithGyro(160, .6, RobotMap.turn160Gain));
+        addParallel(new DriveWithEncoder(57, 1, 5, RobotMap.drive57Gain));
+        addSequential(new InGear(3));
+        addSequential(new TurnWithGyro(160, .5, RobotMap.turn160Gain));
+        addSequential(new DriveWithEncoder(83, .6, 2, RobotMap.drive85Gain));
+        addSequential(new DropGear(.5));
+        addSequential(new DriveWithEncoder(-25, .5, 2, RobotMap.drive71Gain));
+        addSequential(new ResetGearIntake(.5));
+        
+        addSequential(new TurnWithGyro(60, .6, RobotMap.turn160Gain));
+        addParallel(new DriveWithEncoder(57, 1, 5, RobotMap.drive57Gain));
+        addSequential(new InGear(3));
+        addSequential(new TurnWithGyro(160, .5, RobotMap.turn160Gain));
+        addSequential(new DriveWithEncoder(83, .6, 2, RobotMap.drive85Gain));
+        addSequential(new DropGear(.5));
+        addSequential(new DriveWithEncoder(-25, .5, 2, RobotMap.drive71Gain));
+        addSequential(new ResetGearIntake(.5));
     }
 }

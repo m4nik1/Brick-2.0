@@ -66,6 +66,7 @@ public class RobotMap {
 			
 			//IR Gear Sensor
 			public static int gearSensorChannel = 0;
+			public static int gearIntakeSensorChannel = 1;
 			
 			
 			
