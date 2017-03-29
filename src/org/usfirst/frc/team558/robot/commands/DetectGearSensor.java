@@ -23,7 +23,7 @@ public class DetectGearSensor extends Command {
     	
     	if(!Robot.irSensor.IrRead()){
     		
-    		Robot.oi.rumble(.3, .3);
+    		Robot.oi.rumble(.35, .35);
     		
     	}
     	else{
