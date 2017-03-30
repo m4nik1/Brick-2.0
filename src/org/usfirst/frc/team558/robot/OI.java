@@ -1,9 +1,7 @@
 package org.usfirst.frc.team558.robot;
 
 import edu.wpi.first.wpilibj.buttons.*;
-import edu.wpi.first.wpilibj.Joystick;
 import org.usfirst.frc.team558.robot.commands.*;
-import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID;
 

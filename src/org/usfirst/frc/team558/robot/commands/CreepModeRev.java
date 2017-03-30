@@ -13,7 +13,6 @@ public class CreepModeRev extends Command {
 
 	  private double oldWheel = 0.0;
 	  private double quickStopAccumulator;
-	  private double throttleDeadband = 0.01;
 	  private double wheelDeadband = 0.07;
 	
   public CreepModeRev() {
