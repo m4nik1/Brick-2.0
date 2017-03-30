@@ -12,16 +12,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team558.robot.autocommands.DoNothing;
-import org.usfirst.frc.team558.robot.autocommands.DoubleGearAuto;
-import org.usfirst.frc.team558.robot.autocommands.DriveAndDropGearLeftSide;
-import org.usfirst.frc.team558.robot.autocommands.DriveAndDropGearLeftSidePixy;
-import org.usfirst.frc.team558.robot.autocommands.DriveAndDropGearRightSide;
-import org.usfirst.frc.team558.robot.autocommands.DriveAndDropGearRightSidePixy;
-import org.usfirst.frc.team558.robot.autocommands.DriveDropGear;
-import org.usfirst.frc.team558.robot.autocommands.DriveDropGearPixy;
-import org.usfirst.frc.team558.robot.autocommands.DriveWithEncoder;
-import org.usfirst.frc.team558.robot.autocommands.TurnWithGyro;
+import org.usfirst.frc.team558.robot.autocommands.*;
 import org.usfirst.frc.team558.robot.subsystems.*;
 
 public class Robot extends IterativeRobot {
@@ -121,12 +112,12 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 	Scheduler.getInstance().run();
 		
-		/*if (!pcm.getPressureSwitchValue()){
+		if (!pcm.getPressureSwitchValue()){
 			compressor.set(Value.kForward);
 		}
 		else {
 			compressor.set(Value.kOff);
-		}*/
+		}
 		Robot.pixyCam.read();
 		SmartDashboard.putNumber("Left Encoder", Robot.driveTrain.GetLeftEncoder());
 		SmartDashboard.putNumber("Right Encoder", Robot.driveTrain.GetRightEncoder());
