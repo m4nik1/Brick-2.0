@@ -1,4 +1,4 @@
-package org.usfirst.frc.team558.robot.autocommands;
+package org.usfirst.frc.team558.robot.commands;
 
 import org.usfirst.frc.team558.robot.Robot;
 
@@ -7,13 +7,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DropIntake extends Command {
+public class SetBrakeOn extends Command {
 
-    public DropIntake(double atime) {
+    public SetBrakeOn() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.actuateGear);
-        
-        setTimeout(atime);
+        requires(Robot.brake);
     }
 
     // Called just before this Command runs the first time
@@ -22,14 +20,12 @@ public class DropIntake extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	Robot.actuateGear.GearSolDown();
-    	
+    	Robot.brake.BrakeOn();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return isTimedOut();
+        return false;
     }
 
     // Called once after isFinished returns true

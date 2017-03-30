@@ -1,26 +1,40 @@
 package org.usfirst.frc.team558.robot;
 
-import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.*;
 import edu.wpi.first.wpilibj.Joystick;
 import org.usfirst.frc.team558.robot.commands.*;
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID;
 
-/**
- * This class is the glue that binds the controls on the physical operator
- * interface to the commands and command groups that allow control of the robot.
- */
+
 public class OI {
 	
-	Joystick driveStick = new Joystick(0);
-	Joystick operatorStick = new Joystick(1);
-	XboxController AfterGlow = new XboxController(0);
+	XboxController driveStick = new XboxController(RobotMap.driveJoystickPort);
+	XboxController operatorStick = new XboxController(RobotMap.operatorJoystickPort);
+	
 	
 	
 	public OI(){
-	
+		
+		JoystickButton creepModeFwdBtn = new JoystickButton(driveStick, RobotMap.creepModeFwdBtn);
+		JoystickButton creepModeRevBtn = new JoystickButton(driveStick, RobotMap.creepModeRevBtn);
+		
+		JoystickButton placeGearBtn = new JoystickButton(operatorStick, RobotMap.placeGearButton);
+		JoystickButton brakeOnBtn = new JoystickButton(operatorStick, RobotMap.breakOnButton);
+		JoystickButton brakeOffBtn = new JoystickButton(operatorStick, RobotMap.breakOffButton);
+		
+		
+		creepModeFwdBtn.whileHeld(new CreepModeFwd());
+		creepModeRevBtn.whileHeld(new CreepModeRev());
+		
+		placeGearBtn.toggleWhenPressed(new ToggleGearSol());
+		brakeOnBtn.whenPressed(new SetBrakeOn());
+		brakeOffBtn.whenPressed(new SetBrakeOff());
+		
+		
 			
-		}
+	}
 		
 	
 	//Elm City Drive Methods
@@ -48,23 +62,20 @@ public class OI {
 
 		
 		public double GetTurn(){
-			return -driveStick.getRawAxis(RobotMap.turnAxis);
+			return driveStick.getRawAxis(RobotMap.turnAxis);
 		}
 		
-		public void rumble(){
+		public double GearInOut(){
 			
-			if(driveStick.getRawAxis(3) > .1 || driveStick.getRawAxis(2) > .1){
-				
-				AfterGlow.setRumble(GenericHID.RumbleType.kLeftRumble, Robot.oi.GetThrottle());
-				AfterGlow.setRumble(GenericHID.RumbleType.kRightRumble, Robot.oi.GetThrottle());
-			}
-			
-			else{
-				
-				AfterGlow.setRumble(GenericHID.RumbleType.kLeftRumble, 0);
-				AfterGlow.setRumble(GenericHID.RumbleType.kRightRumble, 0);
-				
-			}
+			return operatorStick.getRawAxis(RobotMap.gearIntakeAxis);
 		}
-	
+		
+		public void rumble(double rumbleRight, double rumbleLeft){
+			
+			driveStick.setRumble(GenericHID.RumbleType.kLeftRumble, rumbleLeft);
+			driveStick.setRumble(GenericHID.RumbleType.kRightRumble, rumbleRight);
+			operatorStick.setRumble(GenericHID.RumbleType.kLeftRumble, rumbleLeft);
+			operatorStick.setRumble(GenericHID.RumbleType.kRightRumble, rumbleRight);
+			
+		}
 }

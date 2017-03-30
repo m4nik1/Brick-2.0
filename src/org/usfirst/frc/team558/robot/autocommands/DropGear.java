@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DropGear extends Command {
 
     public DropGear(double atime) {
-        requires(Robot.gearIntake);
+        requires(Robot.gearIntakeSol);
         
         setTimeout(atime);
     }
@@ -20,7 +20,7 @@ public class DropGear extends Command {
     
     protected void execute() {
     	
-    	Robot.gearIntake.PutGearIn(-1);
+    	Robot.gearIntakeSol.PushGearOut();
     	
     }
 
@@ -32,7 +32,7 @@ public class DropGear extends Command {
  
     protected void end() {
     	
-    	Robot.gearIntake.GearIntakeStop();
+    	Robot.gearIntakeMotors.GearIntakeStop();
     	
     }
 

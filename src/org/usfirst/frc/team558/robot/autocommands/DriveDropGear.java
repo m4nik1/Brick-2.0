@@ -12,18 +12,17 @@ public class DriveDropGear extends CommandGroup {
 
     public DriveDropGear() {
     	requires(Robot.driveTrain);
-    	requires(Robot.gearIntake);
-    	requires(Robot.actuateGear);
+    	requires(Robot.gearIntakeMotors);
+    	requires(Robot.gearIntakeSol);
 
-        addSequential(new DriveWithEncoder(-85, .6, 5, RobotMap.drive72Gain));
-        addParallel(new DropGear(2)); 
-        addSequential(new DropIntake(2)); 
-        addSequential(new DriveWithEncoder(15, .6, 2, RobotMap.drive15Gain));
-        addSequential(new GearIntakeUp(1));
+        addSequential(new DriveWithEncoder(85, .5, 5, RobotMap.drive85Gain));
+        addSequential(new DropGear(.5));  
+        addSequential(new DriveWithEncoder(-25, .5, 2, RobotMap.drive71Gain));
+        addSequential(new ResetGearIntake(.5));
         addSequential(new TurnWithGyro(90, .6, RobotMap.turn90Gain));
-        addSequential(new DriveWithEncoder(60, .6, 3, RobotMap.drive72Gain));
+        addSequential(new DriveWithEncoder(60, .5, 3, RobotMap.drive85Gain));
         addSequential(new TurnWithGyro(90, .6, RobotMap.turn90Gain));
-        addSequential(new DriveWithEncoder(80, .8, 3, RobotMap.drive72Gain));
+        addSequential(new DriveWithEncoder(80, .6, 3, RobotMap.drive85Gain));
         
         
     }

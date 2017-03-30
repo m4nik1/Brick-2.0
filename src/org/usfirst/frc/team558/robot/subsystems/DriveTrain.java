@@ -2,6 +2,7 @@ package org.usfirst.frc.team558.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
+import org.usfirst.frc.team558.robot.RobotMap;
 import org.usfirst.frc.team558.robot.commands.ElmCityDrive;
 
 import com.ctre.*;
@@ -13,12 +14,13 @@ import com.ctre.CANTalon.TalonControlMode;
  */
 public class DriveTrain extends Subsystem {
 	
-	CANTalon leftDriveMaster = new CANTalon(1);
-	CANTalon rightDriveMaster = new CANTalon(4);
-	CANTalon rightDriveSlave1 = new CANTalon(5);
-	CANTalon rightDriveSlave2 = new CANTalon(6);
-	CANTalon leftDriveSlave1 = new CANTalon(2);
-	CANTalon leftDriveSlave2 = new CANTalon(3);
+	CANTalon leftDriveMaster = new CANTalon(RobotMap.leftDriveMaster);
+	CANTalon leftDriveSlave1 = new CANTalon(RobotMap.leftDriveSlave1);
+	CANTalon leftDriveSlave2 = new CANTalon(RobotMap.leftDriveSlave2);
+	CANTalon rightDriveMaster = new CANTalon(RobotMap.rightDriveMaster);
+	CANTalon rightDriveSlave1 = new CANTalon(RobotMap.rightDriveSlave1);
+	CANTalon rightDriveSlave2 = new CANTalon(RobotMap.rightDriveSlave2);
+
 	
 	public DriveTrain(){
 		
@@ -31,8 +33,8 @@ public class DriveTrain extends Subsystem {
 		this.leftDriveMaster.reverseSensor(false);
 		this.rightDriveMaster.setFeedbackDevice(FeedbackDevice.QuadEncoder);
 		this.rightDriveMaster.reverseSensor(true);
-		this.leftDriveMaster.configEncoderCodesPerRev((int)(128/1.1616));
-		this.rightDriveMaster.configEncoderCodesPerRev((int)(128/1.1616));
+		this.leftDriveMaster.configEncoderCodesPerRev((int)(128/1.7382));
+		this.rightDriveMaster.configEncoderCodesPerRev((int)(128/1.7382));
 		
 		// Slave DriveTrain
 		this.leftDriveSlave1.changeControlMode(TalonControlMode.Follower);
@@ -48,8 +50,8 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	public void drive(double leftPower, double rightPower){
-		this.leftDriveMaster.set(leftPower);
-		this.rightDriveMaster.set(-rightPower);
+		this.leftDriveMaster.set(-leftPower);
+		this.rightDriveMaster.set(rightPower);
 	}
    
     public void initDefaultCommand() {
@@ -88,7 +90,28 @@ public class DriveTrain extends Subsystem {
     public void SetRampRate(){
     	this.leftDriveMaster.setVoltageRampRate(60);
 		this.rightDriveMaster.setVoltageRampRate(60);
-		
     }
+    
+    public void EnableBrakeMode(){
+    	this.leftDriveMaster.enableBrakeMode(true);
+    	this.leftDriveSlave1.enableBrakeMode(true);
+    	this.leftDriveSlave2.enableBrakeMode(true);
+    	
+    	this.rightDriveMaster.enableBrakeMode(true);
+    	this.rightDriveSlave1.enableBrakeMode(true);
+    	this.rightDriveSlave2.enableBrakeMode(true);
+    }
+    
+    
+    public void DisableBrakeMode(){
+    	this.leftDriveMaster.enableBrakeMode(false);
+    	this.leftDriveSlave1.enableBrakeMode(false);
+    	this.leftDriveSlave2.enableBrakeMode(false);
+    	
+    	this.rightDriveMaster.enableBrakeMode(false);
+    	this.rightDriveSlave1.enableBrakeMode(false);
+    	this.rightDriveSlave2.enableBrakeMode(false);
+    }
+    
 }
 

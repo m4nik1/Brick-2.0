@@ -11,12 +11,14 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class CrossBaseline extends CommandGroup {
 
     public CrossBaseline() {
-        // Add Commands here:
-        addSequential(new DriveWithEncoder(-50, .5, 3, RobotMap.drive72Gain));
+    	
+       	requires(Robot.driveTrain);
+
+        addSequential(new DriveWithEncoder(50, .5, 3, RobotMap.drive71Gain));
         addSequential(new TurnWithGyro(90, .6, RobotMap.turn90Gain));
-        addSequential(new DriveWithEncoder(-60, .6, 3, RobotMap.drive72Gain));
+        addSequential(new DriveWithEncoder(60, .5, 3, RobotMap.drive71Gain));
         addSequential(new TurnWithGyro(-90, .6, RobotMap.turn90Gain));
-        addSequential(new DriveWithEncoder(-80, .6, 3, RobotMap.drive72Gain));
+        addSequential(new DriveWithEncoder(80, .5, 3, RobotMap.drive71Gain));
         
     }
 }

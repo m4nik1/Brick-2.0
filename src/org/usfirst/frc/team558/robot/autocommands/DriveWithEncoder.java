@@ -66,11 +66,11 @@ public class DriveWithEncoder extends Command {
   
     	if (Robot.driveTrain.GetAverageEncoderDistance() < mDistance)
         {
-    		Robot.driveTrain.drive(pidSpeed, pidSpeed);
+    		Robot.driveTrain.drive(-pidSpeed, -pidSpeed);
         }
         else
         {
-        	Robot.driveTrain.drive(-pidSpeed, -pidSpeed);
+        	Robot.driveTrain.drive(pidSpeed, pidSpeed);
         }
     	
     }

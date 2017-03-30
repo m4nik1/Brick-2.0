@@ -31,7 +31,7 @@ public class DriveWithPixyAndEncoder extends Command {
      */
     public DriveWithPixyAndEncoder(double aDistance, double aSpeed, double aTime, double aKp) {
         requires(Robot.driveTrain);
-        requires(Robot.pixycam);
+        requires(Robot.pixyCam);
         
         this.mDistance = aDistance;
         this.mSpeed = aSpeed;
@@ -48,12 +48,12 @@ public class DriveWithPixyAndEncoder extends Command {
     }
 
     protected void execute() {
-    	Robot.pixycam.read();
-    	double offset = Robot.pixycam.getLastOffset();
+    	Robot.pixyCam.read();
+    	double offset = Robot.pixyCam.getLastOffset();
     	double camError = offset - 160;
     	double kPc = .01;
-    	double scaleRight = 1 - (camError * kPc);
-    	double scaleLeft = 1 + (camError * kPc);
+    	double scaleRight = 1 + (camError * kPc);
+    	double scaleLeft = 1 - (camError * kPc);
     	//SmartDashboard.putNumber("Camera Error", camError);
     	//SmartDashboard.putNumber("Right Scalar", scaleRight);
     	//SmartDashboard.putNumber("Left Scalar", scaleLeft);
@@ -72,11 +72,11 @@ public class DriveWithPixyAndEncoder extends Command {
   
     	if (Robot.driveTrain.GetAverageEncoderDistance() < mDistance)
         {
-    		Robot.driveTrain.drive(pidSpeed * scaleLeft, pidSpeed * scaleRight);
+    		Robot.driveTrain.drive(-pidSpeed * scaleLeft, -pidSpeed * scaleRight);
         }
         else
         {
-        	Robot.driveTrain.drive(-pidSpeed * scaleLeft, -pidSpeed * scaleRight);
+        	Robot.driveTrain.drive(pidSpeed * scaleLeft, pidSpeed * scaleRight);
         }
     	
     }

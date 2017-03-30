@@ -4,13 +4,14 @@ import org.usfirst.frc.team558.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+/**
+ *
+ */
+public class DetectGearSensor extends Command {
 
-
-public class GearInOut extends Command {
-
-    public GearInOut() {
+    public DetectGearSensor() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.speedGearIntake);
+        requires(Robot.irSensor);
     }
 
     // Called just before this Command runs the first time
@@ -20,7 +21,16 @@ public class GearInOut extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	Robot.speedGearIntake.SetGearIntake(1);
+    	if(!Robot.irSensor.IrRead()){
+    		
+    		Robot.oi.rumble(.35, .35);
+    		
+    	}
+    	else{
+    		
+    		Robot.oi.rumble(0, 0);
+    		
+    	}
     	
     }
 

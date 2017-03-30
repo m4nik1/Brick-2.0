@@ -1,16 +1,16 @@
 package org.usfirst.frc.team558.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
+import org.usfirst.frc.team558.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
  */
-public class GearIntake extends Subsystem {
+public class GearIntakeSol extends Subsystem {
 	
-	DoubleSolenoid intakeSol = new DoubleSolenoid(0, 1);
-	
+	DoubleSolenoid intakeSol = new DoubleSolenoid(RobotMap.gearPlacerSolenoidChannel1, RobotMap.gearPlacerSolenoidChannel2);
 	
 	public void PushGearOut(){
 		

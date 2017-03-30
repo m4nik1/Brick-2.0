@@ -12,18 +12,19 @@ public class DriveDropGearPixy extends CommandGroup {
 
     public DriveDropGearPixy() {
     	requires(Robot.driveTrain);
-    	requires(Robot.gearIntake);
-    	requires(Robot.actuateGear);
+    	requires(Robot.gearIntakeMotors);
+    	requires(Robot.gearIntakeSol);
+    	requires(Robot.pixyCam);
 
-        addSequential(new DriveWithPixyAndEncoder(-72, .6, 5, RobotMap.drive72Gain));
-        addParallel(new DropGear(2)); 
-        addSequential(new DropIntake(2)); 
-        addSequential(new DriveWithEncoder(15, .6, 2, RobotMap.drive15Gain));
-        addSequential(new GearIntakeUp(2));
+        addSequential(new DriveWithEncoder(44, .5, 2, RobotMap.drive85Gain));
+        addSequential(new DriveWithPixyAndEncoder(50, .5, 2, RobotMap.drive85Gain));
+        addSequential(new DropGear(.5));  
+        addSequential(new DriveWithEncoder(-25, .5, 2, RobotMap.drive71Gain));
+        addSequential(new ResetGearIntake(.5));
         addSequential(new TurnWithGyro(90, .6, RobotMap.turn90Gain));
-        addSequential(new DriveWithEncoder(60, .6, 5, RobotMap.drive72Gain));
+        addSequential(new DriveWithEncoder(60, .5, 2, RobotMap.drive85Gain));
         addSequential(new TurnWithGyro(90, .6, RobotMap.turn90Gain));
-        addSequential(new DriveWithEncoder(60, .6, 5, RobotMap.drive72Gain));
+        addSequential(new DriveWithEncoder(80, .6, 2, RobotMap.drive85Gain));
         
         
     }
