@@ -17,6 +17,10 @@ public class OI {
 		
 		JoystickButton creepModeFwdBtn = new JoystickButton(driveStick, RobotMap.creepModeFwdBtn);
 		JoystickButton creepModeRevBtn = new JoystickButton(driveStick, RobotMap.creepModeRevBtn);
+		JoystickButton brakeOnDriverBtn = new JoystickButton(driveStick, RobotMap.breakOnDriverButton);
+		JoystickButton brakeOffDriverBtn = new JoystickButton(driveStick, RobotMap.breakOffDriverButton);
+		
+		
 		
 		JoystickButton placeGearBtn = new JoystickButton(operatorStick, RobotMap.placeGearButton);
 		JoystickButton brakeOnBtn = new JoystickButton(operatorStick, RobotMap.breakOnButton);
@@ -25,8 +29,11 @@ public class OI {
 		
 		creepModeFwdBtn.whileHeld(new CreepModeFwd());
 		creepModeRevBtn.whileHeld(new CreepModeRev());
+		brakeOnDriverBtn.whenPressed(new SetBrakeOn());
+		brakeOffDriverBtn.whenPressed(new SetBrakeOff());
 		
-		placeGearBtn.toggleWhenPressed(new ToggleGearSol());
+		
+		placeGearBtn.whileHeld(new ToggleGearSol());
 		brakeOnBtn.whenPressed(new SetBrakeOn());
 		brakeOffBtn.whenPressed(new SetBrakeOff());
 		

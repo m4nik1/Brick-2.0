@@ -13,6 +13,9 @@ public class RobotMap {
 			public static int quickTurnButton = 2;
 			public static int creepModeFwdBtn = 5;
 			public static int creepModeRevBtn = 6;
+			public static int breakOnDriverButton = 3;
+			public static int breakOffDriverButton = 4;
+			
 			
 			public static int turnAxis = 0;
 			public static int throttleForwardAxis = 3; // Climber Side
@@ -52,12 +55,12 @@ public class RobotMap {
 		//Solenoids
 			
 			//Climber Brake
-			public static int breakSolenoidChannel1 = 0;
-			public static int breakSolenoidChannel2 = 1;
+			public static int pinBreakSolenoidChannel1 = 0;
+			public static int pinBreakSolenoidChannel2 = 1;
 			
 			//Open Solenoids
-			public static int gearPlacerSolenoidChannel1 = 2;
-			public static int gearPlacerSolenoidChannel2 = 3;
+			public static int FlickerSolenoidChannel1 = 2;
+			public static int diskBreakSolenoidChannel2 = 3;
 			
 			
 			

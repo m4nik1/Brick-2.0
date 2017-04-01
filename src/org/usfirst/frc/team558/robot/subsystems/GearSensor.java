@@ -12,11 +12,19 @@ public class GearSensor extends Subsystem {
     DigitalInput intakeSensor = new DigitalInput(RobotMap.gearIntakeSensorChannel);
     
     public boolean IrRead(){
-    	return intakeSensor.get() || gearSensor.get();
+    	return intakeSensor.get();
     	
     	
     }
     
+    
+    public boolean ReadHighSensor(){
+    	return gearSensor.get();
+    }
+    
+    public boolean ReadLowSensor(){
+    	return intakeSensor.get();
+    }
     
     
     public void initDefaultCommand() {

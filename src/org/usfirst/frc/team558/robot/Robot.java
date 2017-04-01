@@ -45,12 +45,12 @@ public class Robot extends IterativeRobot {
 		//chooser.addObject("CrossBaselineCenter", new CrossBaseline()); // Uncomment these if GearIntake doesn't at all
 		//chooser.addObject("CrossBaselineStraight", new CrossBaselineStraight()); // ****WARNING THIS IS LAST RESORT
 		chooser.addObject("DoubleGearAuto", new DoubleGearAuto());
-		chooser.addObject("Drive Straight Drop Gear" , new DriveDropGear());
-		chooser.addObject("Drive Right Drop Gear" , new DriveAndDropGearRightSide());
-		chooser.addObject("Drive Left Drop Gear" , new DriveAndDropGearLeftSide());
-		chooser.addObject("PIXY Drive Straight Drop Gear" , new DriveDropGearPixy());
-		chooser.addObject("PIXY Drive Right Drop Gear" , new DriveAndDropGearRightSidePixy());
-		chooser.addObject("PIXY Drive Left Drop Gear" , new DriveAndDropGearLeftSidePixy());
+		chooser.addObject("Robot On Straight Drop Gear" , new DriveDropGear());
+		chooser.addObject("Robot On Right Drop Gear" , new DriveAndDropGearRightSide());
+		chooser.addObject("Robot On Left Drop Gear" , new DriveAndDropGearLeftSide());
+		chooser.addObject("PIXY Robot On Straight Drop Gear" , new DriveDropGearPixy());
+		chooser.addObject("PIXY Robot On Right Drop Gear" , new DriveAndDropGearRightSidePixy());
+		chooser.addObject("PIXY Robot On Left Drop Gear" , new DriveAndDropGearLeftSidePixy());
 		
 		
 		SmartDashboard.putData("Auto mode", chooser);
@@ -77,6 +77,7 @@ public class Robot extends IterativeRobot {
 		Robot.driveTrain.resetEncoders();
 		Robot.gyro.ResetGyro();
 		Robot.driveTrain.EnableBrakeMode();
+		Robot.brake.BrakeOff();
 		
 				if (autonomousCommand != null)
 				autonomousCommand.start();
@@ -104,6 +105,7 @@ public class Robot extends IterativeRobot {
 		Robot.gyro.ResetGyro();
 		Robot.driveTrain.resetEncoders();
 		Robot.driveTrain.DisableBrakeMode();
+		Robot.brake.BrakeOff();
 		
 	}
 
@@ -124,7 +126,9 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Average Encoder", Robot.driveTrain.GetAverageEncoderDistance());
 		SmartDashboard.putNumber("Pixy Offset" , Robot.pixyCam.getLastOffset());
 		SmartDashboard.putNumber("Gyro Value", Robot.gyro.GetAngle());
-		SmartDashboard.putBoolean("Gear Sensor" , Robot.irSensor.IrRead());
+		SmartDashboard.putBoolean("High Sensor" , Robot.irSensor.ReadHighSensor());
+		SmartDashboard.putBoolean("Low Sensor" , Robot.irSensor.ReadLowSensor());
+		
 	}
 
 	

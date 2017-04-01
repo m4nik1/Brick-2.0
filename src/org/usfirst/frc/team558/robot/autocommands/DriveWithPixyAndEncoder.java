@@ -80,9 +80,6 @@ public class DriveWithPixyAndEncoder extends Command {
         }
     	
     }
-
-    
-    
     protected boolean isFinished() {
     	return ((Math.abs(error) <= tolerance) || isTimedOut());
     }
