@@ -61,6 +61,8 @@ public class Robot extends IterativeRobot {
 	public void disabledInit() {
 		
 		Robot.oi.rumble(0, 0);
+		//Robot.driveTrain.DisableCurrentModeClimbing();
+
 
 	}
 
@@ -78,6 +80,7 @@ public class Robot extends IterativeRobot {
 		Robot.gyro.ResetGyro();
 		Robot.driveTrain.EnableBrakeMode();
 		Robot.brake.BrakeOff();
+		Robot.driveTrain.DisableCurrentModeClimbing();
 		
 				if (autonomousCommand != null)
 				autonomousCommand.start();
@@ -106,6 +109,8 @@ public class Robot extends IterativeRobot {
 		Robot.driveTrain.resetEncoders();
 		Robot.driveTrain.DisableBrakeMode();
 		Robot.brake.BrakeOff();
+		Robot.driveTrain.DisableCurrentModeClimbing();
+
 		
 	}
 
@@ -128,6 +133,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Gyro Value", Robot.gyro.GetAngle());
 		SmartDashboard.putBoolean("High Sensor" , Robot.irSensor.ReadHighSensor());
 		SmartDashboard.putBoolean("Low Sensor" , Robot.irSensor.ReadLowSensor());
+		SmartDashboard.putBoolean("CurrentLimit", Robot.driveTrain.ReturnCurrentLimitBool());
+		//SmartDashboard.putNumber("Talon Speeds", Robot.driveTrain.ReadDriveTalons());
 		
 	}
 

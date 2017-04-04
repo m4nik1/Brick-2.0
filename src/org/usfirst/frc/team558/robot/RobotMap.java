@@ -15,7 +15,7 @@ public class RobotMap {
 			public static int creepModeRevBtn = 6;
 			public static int breakOnDriverButton = 3;
 			public static int breakOffDriverButton = 4;
-			
+			public static int currentModeClimb = 1;
 			
 			public static int turnAxis = 0;
 			public static int throttleForwardAxis = 3; // Climber Side
@@ -68,8 +68,8 @@ public class RobotMap {
 		// Digital Inputs
 			
 			//IR Gear Sensor
-			public static int gearSensorChannel = 0;
-			public static int gearIntakeSensorChannel = 1;
+			public static int highGearSensorChannel = 0;
+			public static int lowGearSensorChannel = 1;
 			
 			
 			

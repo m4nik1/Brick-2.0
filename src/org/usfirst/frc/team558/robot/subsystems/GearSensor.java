@@ -8,11 +8,11 @@ import edu.wpi.first.wpilibj.DigitalInput;
 
 public class GearSensor extends Subsystem {
 
-    DigitalInput gearSensor = new DigitalInput(RobotMap.gearSensorChannel);
-    DigitalInput intakeSensor = new DigitalInput(RobotMap.gearIntakeSensorChannel);
+    DigitalInput gearSensor = new DigitalInput(RobotMap.highGearSensorChannel);
+    DigitalInput intakeSensor = new DigitalInput(RobotMap.lowGearSensorChannel);
     
     public boolean IrRead(){
-    	return intakeSensor.get();
+    	return !intakeSensor.get(); //|| !gearSensor.get();
     	
     	
     }

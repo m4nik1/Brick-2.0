@@ -20,6 +20,7 @@ public class DriveTrain extends Subsystem {
 	CANTalon rightDriveMaster = new CANTalon(RobotMap.rightDriveMaster);
 	CANTalon rightDriveSlave1 = new CANTalon(RobotMap.rightDriveSlave1);
 	CANTalon rightDriveSlave2 = new CANTalon(RobotMap.rightDriveSlave2);
+	public boolean currentLimit;
 
 	
 	public DriveTrain(){
@@ -29,6 +30,7 @@ public class DriveTrain extends Subsystem {
 		this.rightDriveMaster.changeControlMode(TalonControlMode.PercentVbus);
 		
 		// DriveTrain Encoders
+		
 		this.leftDriveMaster.setFeedbackDevice(FeedbackDevice.QuadEncoder);
 		this.leftDriveMaster.reverseSensor(false);
 		this.rightDriveMaster.setFeedbackDevice(FeedbackDevice.QuadEncoder);
@@ -111,6 +113,52 @@ public class DriveTrain extends Subsystem {
     	this.rightDriveMaster.enableBrakeMode(false);
     	this.rightDriveSlave1.enableBrakeMode(false);
     	this.rightDriveSlave2.enableBrakeMode(false);
+    }
+    
+    public void EnableCurrentModeClimbing(){
+    	this.leftDriveMaster.setCurrentLimit(35);
+    	this.leftDriveSlave1.setCurrentLimit(35);
+    	this.leftDriveSlave2.setCurrentLimit(35);
+    	
+    	this.rightDriveMaster.setCurrentLimit(35);
+    	this.rightDriveSlave1.setCurrentLimit(35);
+    	this.rightDriveSlave2.setCurrentLimit(35);
+    	
+    	this.leftDriveMaster.EnableCurrentLimit(true);
+    	this.leftDriveSlave1.EnableCurrentLimit(true);
+    	this.leftDriveSlave2.EnableCurrentLimit(true);
+    	
+    	currentLimit = true;
+    	this.rightDriveMaster.EnableCurrentLimit(true);
+    	this.rightDriveSlave1.EnableCurrentLimit(true);
+    	this.rightDriveSlave2.EnableCurrentLimit(true);
+    	
+    	
+    	
+    }
+    
+    public void DisableCurrentModeClimbing(){
+    	
+    	this.leftDriveMaster.EnableCurrentLimit(false);
+    	this.leftDriveSlave1.EnableCurrentLimit(false);
+    	this.leftDriveSlave2.EnableCurrentLimit(false);
+    	
+    	currentLimit = false;
+    	this.rightDriveMaster.EnableCurrentLimit(false);
+    	this.rightDriveSlave1.EnableCurrentLimit(false);
+    	this.rightDriveSlave2.EnableCurrentLimit(false);
+    	
+    }
+    
+    public double ReadDriveTalons(){
+    	
+    	return this.leftDriveMaster.getOutputCurrent();
+    }
+    
+    public boolean ReturnCurrentLimitBool(){
+    	
+    	return currentLimit;
+    	
     }
     
 }
