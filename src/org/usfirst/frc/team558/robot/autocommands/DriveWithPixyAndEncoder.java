@@ -52,8 +52,8 @@ public class DriveWithPixyAndEncoder extends Command {
     	double offset = Robot.pixyCam.getLastOffset();
     	double camError = offset - 160;
     	double kPc = .01;
-    	double scaleRight = 1 + (camError * kPc);
-    	double scaleLeft = 1 - (camError * kPc);
+    	double scaleRight = 1 - (camError * kPc);
+    	double scaleLeft = 1 + (camError * kPc);
     	//SmartDashboard.putNumber("Camera Error", camError);
     	//SmartDashboard.putNumber("Right Scalar", scaleRight);
     	//SmartDashboard.putNumber("Left Scalar", scaleLeft);
@@ -80,9 +80,6 @@ public class DriveWithPixyAndEncoder extends Command {
         }
     	
     }
-
-    
-    
     protected boolean isFinished() {
     	return ((Math.abs(error) <= tolerance) || isTimedOut());
     }

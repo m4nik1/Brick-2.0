@@ -1,5 +1,6 @@
 package org.usfirst.frc.team558.robot.commands;
 
+
 import org.usfirst.frc.team558.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -7,11 +8,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DetectGearSensorTimed extends Command {
+public class EnableCurrentLimit extends Command {
 
-    public DetectGearSensorTimed() {
+    public EnableCurrentLimit() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.irSensor);
+        requires(Robot.driveTrain);
     }
 
     // Called just before this Command runs the first time
@@ -21,31 +22,27 @@ public class DetectGearSensorTimed extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	if(Robot.irSensor.IrRead()){
-    		
-    		Robot.oi.rumble(.2, .2);
-    		setTimeout(1);
-    		
-    	}
-    	else{
-    		
-    		Robot.oi.rumble(0, 0);
-    		
-    	}
-    	isTimedOut();
+    	Robot.driveTrain.EnableCurrentModeClimbing();
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	
+    	Robot.driveTrain.initDefaultCommand();
+    	
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	
+    	Robot.driveTrain.initDefaultCommand();
+    	
     }
 }

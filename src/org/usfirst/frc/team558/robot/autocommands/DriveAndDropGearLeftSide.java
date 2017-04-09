@@ -16,13 +16,13 @@ public class DriveAndDropGearLeftSide extends CommandGroup {
     	requires(Robot.gearIntakeMotors);
 
     	addSequential(new DriveWithEncoder(85, .5, 3, RobotMap.drive85Gain));
-    	/*addSequential(new TurnWithGyro(60, .5, RobotMap.turn60Gain));
+    	addSequential(new TurnWithGyro(60, .5, RobotMap.turn60Gain));
     	addSequential(new DriveWithEncoder(71, .5, 3, RobotMap.drive71Gain));
     	addSequential(new DropGear(.5));
-        addSequential(new DriveWithEncoder(-25, .5, 3, RobotMap.drive71Gain));
+        addSequential(new DriveWithEncoder(-32, .5, 3, RobotMap.drive57Gain));
         addSequential(new ResetGearIntake(.5));
         addSequential(new TurnWithGyro(-60, .5, RobotMap.turn60Gain));
-        addSequential(new DriveWithEncoder(50, .5, 3, RobotMap.drive71Gain));*/
+        addSequential(new DriveWithEncoder(50, .5, 3, RobotMap.drive71Gain));
      
     }
 }

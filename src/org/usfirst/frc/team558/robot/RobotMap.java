@@ -13,12 +13,16 @@ public class RobotMap {
 			public static int quickTurnButton = 2;
 			public static int creepModeFwdBtn = 5;
 			public static int creepModeRevBtn = 6;
+			public static int breakOnDriverButton = 3;
+			public static int breakOffDriverButton = 4;
+			public static int currentModeClimb = 1;
 			
 			public static int turnAxis = 0;
 			public static int throttleForwardAxis = 3; // Climber Side
 			public static int throttleReverseAxis = 2; // Gear Side
 			
-			public static double creepModeThrottle = .3;
+			public static double creepModeFwdThrottle = .3;
+			public static double creepModeRevThrottle = .65;
 			public static double quickturnSensitivity = .95;
 			public static double normalTurnSensitivity = .75;
 			
@@ -52,12 +56,12 @@ public class RobotMap {
 		//Solenoids
 			
 			//Climber Brake
-			public static int breakSolenoidChannel1 = 0;
-			public static int breakSolenoidChannel2 = 1;
+			public static int pinBreakSolenoidChannel1 = 0;
+			public static int pinBreakSolenoidChannel2 = 1;
 			
 			//Open Solenoids
-			public static int gearPlacerSolenoidChannel1 = 2;
-			public static int gearPlacerSolenoidChannel2 = 3;
+			public static int FlickerSolenoidChannel1 = 2;
+			public static int diskBreakSolenoidChannel2 = 3;
 			
 			
 			
@@ -65,8 +69,8 @@ public class RobotMap {
 		// Digital Inputs
 			
 			//IR Gear Sensor
-			public static int gearSensorChannel = 0;
-			public static int gearIntakeSensorChannel = 1;
+			public static int highGearSensorChannel = 0;
+			public static int lowGearSensorChannel = 1;
 			
 			
 			

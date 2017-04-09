@@ -8,19 +8,21 @@ import edu.wpi.first.wpilibj.*;
 
 public class Brake extends Subsystem {
 
-	public DoubleSolenoid brake = new DoubleSolenoid(RobotMap.breakSolenoidChannel1,RobotMap.breakSolenoidChannel2); 
-
+	public DoubleSolenoid pinBrake = new DoubleSolenoid(RobotMap.pinBreakSolenoidChannel1,RobotMap.pinBreakSolenoidChannel2); 
+	public Solenoid diskBrake = new Solenoid(RobotMap.diskBreakSolenoidChannel2);
 	
     public void initDefaultCommand() {
     
     }
     
     public void BrakeOn(){
-    	brake.set(DoubleSolenoid.Value.kForward);
+    	pinBrake.set(DoubleSolenoid.Value.kReverse);
+    	diskBrake.set(false);
     }
     
     public void BrakeOff(){
-    	brake.set(DoubleSolenoid.Value.kReverse);
+    	pinBrake.set(DoubleSolenoid.Value.kForward);
+    	diskBrake.set(true);
     }
 }
 

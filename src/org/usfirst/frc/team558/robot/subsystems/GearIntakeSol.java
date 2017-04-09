@@ -3,6 +3,7 @@ package org.usfirst.frc.team558.robot.subsystems;
 import org.usfirst.frc.team558.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -10,17 +11,17 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class GearIntakeSol extends Subsystem {
 	
-	DoubleSolenoid intakeSol = new DoubleSolenoid(RobotMap.gearPlacerSolenoidChannel1, RobotMap.gearPlacerSolenoidChannel2);
+	Solenoid intakeSol = new Solenoid(RobotMap.FlickerSolenoidChannel1); 
 	
 	public void PushGearOut(){
 		
-		intakeSol.set(DoubleSolenoid.Value.kForward);
+		intakeSol.set(true);
 		
 	}
 	
 	public void ResetIntake(){
 		
-		intakeSol.set(DoubleSolenoid.Value.kReverse);
+		intakeSol.set(false);
 		
 	}
 

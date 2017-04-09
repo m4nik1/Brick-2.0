@@ -17,18 +17,22 @@ import org.usfirst.frc.team558.robot.subsystems.*;
 
 public class Robot extends IterativeRobot {
 
+	//Subsystems
 	public static DriveTrain driveTrain = new DriveTrain();
 	public static GearIntakeSol gearIntakeSol = new GearIntakeSol();
 	public static GearIntakeMotor gearIntakeMotors = new GearIntakeMotor();
 	public static Brake brake = new Brake();
 	
+	//Sensors
 	public static PixyCam pixyCam = new PixyCam();
 	public static Gyro gyro = new Gyro();
 	public static GearSensor irSensor = new GearSensor();
 	
+	//Compressor Handler
 	public static Compressor pcm = new Compressor();
 	public static Relay compressor = new Relay(0);
 	
+	//Operator Interface
 	public static OI oi;
 	
 	Command autonomousCommand;
@@ -45,12 +49,12 @@ public class Robot extends IterativeRobot {
 		//chooser.addObject("CrossBaselineCenter", new CrossBaseline()); // Uncomment these if GearIntake doesn't at all
 		//chooser.addObject("CrossBaselineStraight", new CrossBaselineStraight()); // ****WARNING THIS IS LAST RESORT
 		chooser.addObject("DoubleGearAuto", new DoubleGearAuto());
-		chooser.addObject("Drive Straight Drop Gear" , new DriveDropGear());
-		chooser.addObject("Drive Right Drop Gear" , new DriveAndDropGearRightSide());
-		chooser.addObject("Drive Left Drop Gear" , new DriveAndDropGearLeftSide());
-		chooser.addObject("PIXY Drive Straight Drop Gear" , new DriveDropGearPixy());
-		chooser.addObject("PIXY Drive Right Drop Gear" , new DriveAndDropGearRightSidePixy());
-		chooser.addObject("PIXY Drive Left Drop Gear" , new DriveAndDropGearLeftSidePixy());
+		chooser.addObject("Robot On Straight Drop Gear" , new DriveDropGear());
+		chooser.addObject("Robot On Right Drop Gear" , new DriveAndDropGearRightSide());
+		chooser.addObject("Robot On Left Drop Gear" , new DriveAndDropGearLeftSide());
+		chooser.addObject("PIXY Robot On Straight Drop Gear" , new DriveDropGearPixy());
+		chooser.addObject("PIXY Robot On Right Drop Gear" , new DriveAndDropGearRightSidePixy());
+		chooser.addObject("PIXY Robot On Left Drop Gear" , new DriveAndDropGearLeftSidePixy());
 		
 		
 		SmartDashboard.putData("Auto mode", chooser);
@@ -61,6 +65,7 @@ public class Robot extends IterativeRobot {
 	public void disabledInit() {
 		
 		Robot.oi.rumble(0, 0);
+		
 
 	}
 
@@ -77,6 +82,8 @@ public class Robot extends IterativeRobot {
 		Robot.driveTrain.resetEncoders();
 		Robot.gyro.ResetGyro();
 		Robot.driveTrain.EnableBrakeMode();
+		Robot.brake.BrakeOff();
+		Robot.driveTrain.DisableCurrentModeClimbing();
 		
 				if (autonomousCommand != null)
 				autonomousCommand.start();
@@ -87,11 +94,9 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 		Robot.pixyCam.read();
-		SmartDashboard.putNumber("Gyro Value", Robot.gyro.GetAngle());
-		SmartDashboard.putNumber("Left Encoder", Robot.driveTrain.GetLeftEncoder());
-		SmartDashboard.putNumber("Right Encoder", Robot.driveTrain.GetRightEncoder());
-		SmartDashboard.putNumber("Average Encoder", Robot.driveTrain.GetAverageEncoderDistance());
-		SmartDashboard.putNumber("Pixy Offset" , Robot.pixyCam.getLastOffset());
+		this.CompressorHandler();
+		this.DashboardOutputs();
+		
 	}
 
 	@Override
@@ -104,6 +109,9 @@ public class Robot extends IterativeRobot {
 		Robot.gyro.ResetGyro();
 		Robot.driveTrain.resetEncoders();
 		Robot.driveTrain.DisableBrakeMode();
+		Robot.brake.BrakeOff();
+		Robot.driveTrain.DisableCurrentModeClimbing();
+
 		
 	}
 
@@ -112,24 +120,39 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 	Scheduler.getInstance().run();
 		
-		if (!pcm.getPressureSwitchValue()){
-			compressor.set(Value.kForward);
-		}
-		else {
-			compressor.set(Value.kOff);
-		}
+		
 		Robot.pixyCam.read();
-		SmartDashboard.putNumber("Left Encoder", Robot.driveTrain.GetLeftEncoder());
-		SmartDashboard.putNumber("Right Encoder", Robot.driveTrain.GetRightEncoder());
-		SmartDashboard.putNumber("Average Encoder", Robot.driveTrain.GetAverageEncoderDistance());
-		SmartDashboard.putNumber("Pixy Offset" , Robot.pixyCam.getLastOffset());
-		SmartDashboard.putNumber("Gyro Value", Robot.gyro.GetAngle());
-		SmartDashboard.putBoolean("Gear Sensor" , Robot.irSensor.IrRead());
+		this.CompressorHandler();
+		this.DashboardOutputs();
+		
 	}
 
 	
 	@Override
 	public void testPeriodic() {
 		LiveWindow.run();
+	}
+	
+	public void CompressorHandler(){
+		if (!pcm.getPressureSwitchValue()){
+			compressor.set(Value.kForward);
+		}
+		else {
+			compressor.set(Value.kOff);
+		}
+	}
+	
+	public void DashboardOutputs(){
+		SmartDashboard.putNumber("Left Encoder", Robot.driveTrain.GetLeftEncoder());
+		SmartDashboard.putNumber("Right Encoder", Robot.driveTrain.GetRightEncoder());
+		SmartDashboard.putNumber("Average Encoder", Robot.driveTrain.GetAverageEncoderDistance());
+		SmartDashboard.putNumber("Pixy Offset" , Robot.pixyCam.getLastOffset());
+		SmartDashboard.putNumber("Gyro Value", Robot.gyro.GetAngle());
+		SmartDashboard.putBoolean("High Sensor" , Robot.irSensor.ReadHighSensor());
+		SmartDashboard.putBoolean("Low Sensor" , Robot.irSensor.ReadLowSensor());
+		SmartDashboard.putBoolean("CurrentLimit", Robot.driveTrain.ReturnCurrentLimitBool());
+		SmartDashboard.putNumber("Left Drive", Robot.driveTrain.GetLeftDrive());
+		SmartDashboard.putNumber("Right Drive", Robot.driveTrain.GetRightDrive());
+		
 	}
 }
