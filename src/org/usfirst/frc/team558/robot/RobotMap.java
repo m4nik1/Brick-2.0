@@ -21,7 +21,8 @@ public class RobotMap {
 			public static int throttleForwardAxis = 3; // Climber Side
 			public static int throttleReverseAxis = 2; // Gear Side
 			
-			public static double creepModeThrottle = .3;
+			public static double creepModeFwdThrottle = .3;
+			public static double creepModeRevThrottle = .65;
 			public static double quickturnSensitivity = .95;
 			public static double normalTurnSensitivity = .75;
 			
