@@ -1,0 +1,35 @@
+package org.usfirst.frc.team558.robot.subsystems;
+
+import edu.wpi.first.wpilibj.command.Subsystem;
+import org.usfirst.frc.team558.robot.RobotMap;
+import org.usfirst.frc.team558.robot.commands.DetectGearSensor;
+
+import edu.wpi.first.wpilibj.DigitalInput;
+
+public class GearSensor extends Subsystem {
+
+    DigitalInput gearSensor = new DigitalInput(RobotMap.highGearSensorChannel);
+    DigitalInput intakeSensor = new DigitalInput(RobotMap.lowGearSensorChannel);
+    
+    public boolean IrRead(){
+    	return !intakeSensor.get(); //|| !gearSensor.get();
+    	
+    	
+    }
+    
+    
+    public boolean ReadHighSensor(){
+    	return gearSensor.get();
+    }
+    
+    public boolean ReadLowSensor(){
+    	return intakeSensor.get();
+    }
+    
+    
+    public void initDefaultCommand() {
+        setDefaultCommand(new DetectGearSensor());
+    	
+    }
+}
+
