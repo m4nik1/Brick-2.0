@@ -8,5 +8,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="var" path="USERLIBS_DIR/CTRLib.jar"/>
 	<classpathentry kind="var" path="USERLIBS_DIR/navx_frc.jar"/>
+	<classpathentry kind="lib" path="/Users/manik/Downloads/CTRE_FRCLibs_NON-WINDOWS_v4.4.1.12/java/lib/CTRLib.jar"/>
+	<classpathentry kind="lib" path="/Users/manik/Downloads/Brick-2.0-Working-on-Code/build/jars/navx_frc.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

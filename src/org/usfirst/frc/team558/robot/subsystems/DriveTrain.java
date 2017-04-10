@@ -29,6 +29,18 @@ public class DriveTrain extends Subsystem {
 		this.leftDriveMaster.changeControlMode(TalonControlMode.PercentVbus);
 		this.rightDriveMaster.changeControlMode(TalonControlMode.PercentVbus);
 		
+		//Current limiting Masters
+		this.leftDriveMaster.EnableCurrentLimit(true);
+		this.rightDriveMaster.EnableCurrentLimit(true);
+		this.leftDriveMaster.setCurrentLimit(50);
+		this.rightDriveMaster.setCurrentLimit(50);
+		
+		//Current limiting slaves
+		this.leftDriveSlave1.EnableCurrentLimit(true);
+		this.leftDriveSlave2.EnableCurrentLimit(true);
+		this.rightDriveSlave1.setCurrentLimit(RobotMap.driveTrainCurrentLimitAmp);
+		this.rightDriveSlave2.setCurrentLimit(RobotMap.driveTrainCurrentLimitAmp);
+		
 		// DriveTrain Encoders
 		
 		this.leftDriveMaster.setFeedbackDevice(FeedbackDevice.QuadEncoder);

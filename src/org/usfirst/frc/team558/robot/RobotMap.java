@@ -51,6 +51,9 @@ public class RobotMap {
 			public static int gearIntakeChannel1 = 12;
 			public static int gearIntakeChannel2= 3;
 			
+			// DriveTrain Current limit amps
+			public static int driveTrainCurrentLimitAmp = 50;
+			
 			
 			
 		//Solenoids

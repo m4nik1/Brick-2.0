@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 
 import org.usfirst.frc.team558.robot.autocommands.*;
 import org.usfirst.frc.team558.robot.subsystems.*;
@@ -35,6 +36,9 @@ public class Robot extends IterativeRobot {
 	//Operator Interface
 	public static OI oi;
 	
+	//Current
+	PowerDistributionPanel totalCurrent = new PowerDistributionPanel(0);
+	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<Command>();
 	
@@ -46,7 +50,7 @@ public class Robot extends IterativeRobot {
 		
 		
 		chooser.addDefault("Do Nothing", new DoNothing());
-		//chooser.addObject("CrossBaselineCenter", new CrossBaseline()); // Uncomment these if GearIntake doesn't at all
+		//chooser.addObject("CrossBaselineCenter", new CrossBaseline()); // Uncomment these if GearIntake doesn't work at all
 		//chooser.addObject("CrossBaselineStraight", new CrossBaselineStraight()); // ****WARNING THIS IS LAST RESORT
 		chooser.addObject("DoubleGearAuto", new DoubleGearAuto());
 		chooser.addObject("Robot On Straight Drop Gear" , new DriveDropGear());
@@ -111,6 +115,8 @@ public class Robot extends IterativeRobot {
 		Robot.driveTrain.DisableBrakeMode();
 		Robot.brake.BrakeOff();
 		Robot.driveTrain.DisableCurrentModeClimbing();
+		
+
 
 		
 	}
@@ -124,6 +130,12 @@ public class Robot extends IterativeRobot {
 		Robot.pixyCam.read();
 		this.CompressorHandler();
 		this.DashboardOutputs();
+		
+		if(totalCurrent.getTotalCurrent() >= 50){
+			
+			pcm.stop();
+			
+		}
 		
 	}
 
