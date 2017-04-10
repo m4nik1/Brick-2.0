@@ -32,7 +32,7 @@ public class CreepModeRev extends Command {
       double wheelNonLinearity;
 
       double wheel = handleDeadband(Robot.oi.GetTurn(), wheelDeadband);
-      double throttle = RobotMap.creepModeThrottle;
+      double throttle = RobotMap.creepModeRevThrottle;
 
       double negInertia = wheel - oldWheel;
       oldWheel = wheel;

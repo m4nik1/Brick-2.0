@@ -8,24 +8,19 @@ import edu.wpi.first.wpilibj.GenericHID;
 
 public class OI {
 	
-	XboxController driveStick = new XboxController(RobotMap.driveJoystickPort);
-	XboxController operatorStick = new XboxController(RobotMap.operatorJoystickPort);
+		XboxController driveStick = new XboxController(RobotMap.driveJoystickPort);
+		XboxController operatorStick = new XboxController(RobotMap.operatorJoystickPort);
 	
 	
 	
 	public OI(){
 		
+		//Driver Buttons
 		JoystickButton creepModeFwdBtn = new JoystickButton(driveStick, RobotMap.creepModeFwdBtn);
 		JoystickButton creepModeRevBtn = new JoystickButton(driveStick, RobotMap.creepModeRevBtn);
 		JoystickButton brakeOnDriverBtn = new JoystickButton(driveStick, RobotMap.breakOnDriverButton);
 		JoystickButton brakeOffDriverBtn = new JoystickButton(driveStick, RobotMap.breakOffDriverButton);
 		JoystickButton currentModeClimbBtn= new JoystickButton(driveStick, RobotMap.currentModeClimb);
-		
-		
-		JoystickButton placeGearBtn = new JoystickButton(operatorStick, RobotMap.placeGearButton);
-		JoystickButton brakeOnBtn = new JoystickButton(operatorStick, RobotMap.breakOnButton);
-		JoystickButton brakeOffBtn = new JoystickButton(operatorStick, RobotMap.breakOffButton);
-		
 		
 		creepModeFwdBtn.whileHeld(new CreepModeFwd());
 		creepModeRevBtn.whileHeld(new CreepModeRev());
@@ -33,6 +28,11 @@ public class OI {
 		brakeOffDriverBtn.whenPressed(new SetBrakeOff());
 		currentModeClimbBtn.whenPressed(new EnableCurrentLimit());
 		
+		
+		//Operator Buttons
+		JoystickButton placeGearBtn = new JoystickButton(operatorStick, RobotMap.placeGearButton);
+		JoystickButton brakeOnBtn = new JoystickButton(operatorStick, RobotMap.breakOnButton);
+		JoystickButton brakeOffBtn = new JoystickButton(operatorStick, RobotMap.breakOffButton);
 		
 		placeGearBtn.whileHeld(new ToggleGearSol());
 		brakeOnBtn.whenPressed(new SetBrakeOn());
@@ -54,6 +54,8 @@ public class OI {
 			double reverse = driveStick.getRawAxis(RobotMap.throttleForwardAxis);
 	    	double forward = driveStick.getRawAxis(RobotMap.throttleReverseAxis);
 
+	    	//This might be a redundant deadband or the elm city command might be
+	    	
 	    	if ((reverse > .1) && (forward >.1)){
 	    		return 0;
 	    	}
@@ -72,11 +74,15 @@ public class OI {
 			return driveStick.getRawAxis(RobotMap.turnAxis);
 		}
 		
+		
+	//Operator stick to control gear intake
 		public double GearInOut(){
 			
 			return operatorStick.getRawAxis(RobotMap.gearIntakeAxis);
 		}
 		
+		
+	//Method to rumble xbox controllers
 		public void rumble(double rumbleRight, double rumbleLeft){
 			
 			driveStick.setRumble(GenericHID.RumbleType.kLeftRumble, rumbleLeft);

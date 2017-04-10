@@ -17,18 +17,22 @@ import org.usfirst.frc.team558.robot.subsystems.*;
 
 public class Robot extends IterativeRobot {
 
+	//Subsystems
 	public static DriveTrain driveTrain = new DriveTrain();
 	public static GearIntakeSol gearIntakeSol = new GearIntakeSol();
 	public static GearIntakeMotor gearIntakeMotors = new GearIntakeMotor();
 	public static Brake brake = new Brake();
 	
+	//Sensors
 	public static PixyCam pixyCam = new PixyCam();
 	public static Gyro gyro = new Gyro();
 	public static GearSensor irSensor = new GearSensor();
 	
+	//Compressor Handler
 	public static Compressor pcm = new Compressor();
 	public static Relay compressor = new Relay(0);
 	
+	//Operator Interface
 	public static OI oi;
 	
 	Command autonomousCommand;
@@ -61,8 +65,7 @@ public class Robot extends IterativeRobot {
 	public void disabledInit() {
 		
 		Robot.oi.rumble(0, 0);
-		//Robot.driveTrain.DisableCurrentModeClimbing();
-
+		
 
 	}
 
@@ -91,11 +94,9 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 		Robot.pixyCam.read();
-		SmartDashboard.putNumber("Gyro Value", Robot.gyro.GetAngle());
-		SmartDashboard.putNumber("Left Encoder", Robot.driveTrain.GetLeftEncoder());
-		SmartDashboard.putNumber("Right Encoder", Robot.driveTrain.GetRightEncoder());
-		SmartDashboard.putNumber("Average Encoder", Robot.driveTrain.GetAverageEncoderDistance());
-		SmartDashboard.putNumber("Pixy Offset" , Robot.pixyCam.getLastOffset());
+		this.CompressorHandler();
+		this.DashboardOutputs();
+		
 	}
 
 	@Override
@@ -119,13 +120,29 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 	Scheduler.getInstance().run();
 		
+		
+		Robot.pixyCam.read();
+		this.CompressorHandler();
+		this.DashboardOutputs();
+		
+	}
+
+	
+	@Override
+	public void testPeriodic() {
+		LiveWindow.run();
+	}
+	
+	public void CompressorHandler(){
 		if (!pcm.getPressureSwitchValue()){
 			compressor.set(Value.kForward);
 		}
 		else {
 			compressor.set(Value.kOff);
 		}
-		Robot.pixyCam.read();
+	}
+	
+	public void DashboardOutputs(){
 		SmartDashboard.putNumber("Left Encoder", Robot.driveTrain.GetLeftEncoder());
 		SmartDashboard.putNumber("Right Encoder", Robot.driveTrain.GetRightEncoder());
 		SmartDashboard.putNumber("Average Encoder", Robot.driveTrain.GetAverageEncoderDistance());
@@ -134,13 +151,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putBoolean("High Sensor" , Robot.irSensor.ReadHighSensor());
 		SmartDashboard.putBoolean("Low Sensor" , Robot.irSensor.ReadLowSensor());
 		SmartDashboard.putBoolean("CurrentLimit", Robot.driveTrain.ReturnCurrentLimitBool());
-		//SmartDashboard.putNumber("Talon Speeds", Robot.driveTrain.ReadDriveTalons());
+		SmartDashboard.putNumber("Left Drive", Robot.driveTrain.GetLeftDrive());
+		SmartDashboard.putNumber("Right Drive", Robot.driveTrain.GetRightDrive());
 		
-	}
-
-	
-	@Override
-	public void testPeriodic() {
-		LiveWindow.run();
 	}
 }
