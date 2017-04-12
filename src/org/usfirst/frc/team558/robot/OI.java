@@ -37,10 +37,6 @@ public class OI {
 		placeGearBtn.whileHeld(new ToggleGearSol());
 		brakeOnBtn.whenPressed(new SetBrakeOn());
 		brakeOffBtn.whenPressed(new SetBrakeOff());
-		
-		
-		
-			
 	}
 		
 	
